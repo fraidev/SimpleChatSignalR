@@ -1,0 +1,14 @@
+<h1 id="tableLabel">Weather forecast</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+<div id="divMessages" class="messages">
+  <div *ngFor="let message of messages">
+    <div class="message-author">{{message}}</div>
+  </div>
+</div>
+<div class="input-zone">
+  <label id="lblMessage" for="tbMessage">Message:</label>
+  <input id="tbMessage" [(ngModel)]="messageInput" class="input-zone-input" type="text" />
+  <button id="btnSend" (click)="send(messageInput)">Send</button>
+</div>
