@@ -1,6 +1,11 @@
-<h1 id="tableLabel">Weather forecast</h1>
+<h1 id="tableLabel">Simple Chat</h1>
 
-<p>This component demonstrates fetching data from the server.</p>
+<p>Simple chat with SignalR.</p>
+
+<div class="username-zone">
+  <label id="lblUsername" for="tbUsername">Username: </label>
+  <input id="tbUsername" [(ngModel)]="usernameInput" class="input-zone-input" type="text" />
+</div>
 
 <div id="divMessages" class="messages">
   <div *ngFor="let message of messages">
@@ -8,7 +13,7 @@
   </div>
 </div>
 <div class="input-zone">
-  <label id="lblMessage" for="tbMessage">Message:</label>
+  <label id="lblMessage" for="tbMessage">Message: </label>
   <input id="tbMessage" [(ngModel)]="messageInput" class="input-zone-input" type="text" />
-  <button id="btnSend" (click)="send(messageInput)">Send</button>
+  <button id="btnSend" (click)="send(usernameInput, messageInput)">Send</button>
 </div>

@@ -29,8 +29,10 @@ export class SignalRService {
     });
   }
 
-  public sendMessage(message: string) {
-    const username = new Date().getTime().toString();
+  public sendMessage(username:string, message: string) {
+    if(!username){
+      username = new Date().getTime().toString();
+    }
     return this.hubConnection.send("NewMessage", username, message).then();
   }
 }

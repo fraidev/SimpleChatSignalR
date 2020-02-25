@@ -8,19 +8,9 @@ import { SignalRService } from '../services/signal-r.service';
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit {
-  public forecasts: WeatherForecast[];
   public messageInput: string;
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string, public signalRService: SignalRService) {
-    // http.get<WeatherForecast[]>(baseUrl + 'weatherforecast').subscribe(result => {
-    //   this.forecasts = result;
-    // }, error => console.error(error));
-
-
-    // http.get(baseUrl + 'chatHub')
-    //   .subscribe(res => {
-    //     console.log(res);
-    //   })
+  constructor(public signalRService: SignalRService) {
   }
   get messages() {
     return this.signalRService.messages;
@@ -30,14 +20,8 @@ export class ChatComponent implements OnInit {
     this.signalRService.startConnection();
   }
 
-  send(msg: string) {
-    this.signalRService.sendMessage(msg);
+  send(user: string, msg: string) {
+    this.signalRService.sendMessage(user, msg);
   }
 
-}
-interface WeatherForecast {
-  date: string;
-  temperatureC: number;
-  temperatureF: number;
-  summary: string;
 }
